@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Woynishet Mesfin · ወይኒሸት መስፍን · painter</title>
+  <!-- bilingual: English + Amharic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- include Noto Sans Ethiopic for better Amharic support, plus Inter/Playfair -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Noto+Sans+Ethiopic:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* --- BLACK & WHITE THEME (monochrome) --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans Ethiopic', sans-serif;
+      background-color: #0b0b0b;    /* deep black */
+      color: #eaeaea;               /* off-white */
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', 'Noto Sans Ethiopic', serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+
+    /* amharic text specific */
+    .amharic {
+      font-family: 'Noto Sans Ethiopic', sans-serif;
+      font-weight: 300;
+      color: #bbbbbb;
+      font-size: 0.9em;
+    }
+
+    a {
+      color: #cccccc;
+      text-decoration: none;
+      transition: color 0.2s, border 0.2s;
+    }
+    a:hover {
+      color: #ffffff;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ----- HEADER (monochrome) ----- */
+    header {
+      background: #111;
+      border-bottom: 1px solid #2a2a2a;
+      padding: 0.8rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: white;
+      line-height: 1.2;
+    }
+    .logo span {
+      display: block;
+      font-size: 0.85rem;
+      font-family: 'Noto Sans Ethiopic', sans-serif;
+      color: #aaa;
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 500;
+      flex-wrap: wrap;
+      row-gap: 0.5rem;
+    }
+    .nav-links a {
+      color: #ccc;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+    .nav-links a:hover {
+      color: white;
+      border-bottom-color: white;
+    }
+
+    /* ----- HERO / HOME SECTION (bilingual) ----- */
+    .hero {
+      padding: 4rem 0 2rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3.3rem;
+      font-weight: 600;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    .hero h1 + .amharic {
+      font-size: 1.8rem;
+      color: #aaa;
+      margin-top: 0.3rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #aaa;
+      max-width: 750px;
+      margin: 1.5rem auto 0;
+    }
+
+    /* ----- VISION / MISSION / CORE VALUES (cards) ----- */
+    .vmv-section {
+      padding: 3rem 0;
+      background: #0f0f0f;
+      border-top: 1px solid #2b2b2b;
+      border-bottom: 1px solid #2b2b2b;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: white;
+    }
+    .section-title .amharic {
+      font-size: 1.5rem;
+      color: #999;
+    }
+    .vmv-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .vmv-card {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 2rem 1.5rem;
+      border-radius: 24px;
+      text-align: center;
+      transition: 0.2s;
+    }
+    .vmv-card:hover {
+      border-color: #777;
+      background: #202020;
+    }
+    .vmv-card i {
+      font-size: 2.5rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+    .vmv-card h3 {
+      font-size: 1.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .vmv-card .amharic {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .vmv-card p {
+      color: #b5b5b5;
+      font-size: 1rem;
+    }
+
+    /* ----- 3D CAROUSEL (6 pictures) ----- */
+    .carousel-section {
+      padding: 4rem 0 3rem;
+    }
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+      height: 440px;
+      margin: 2rem auto 0;
+      perspective: 1700px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #carousel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+      will-change: transform;
+    }
+    .carousel-item {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 240px;
+      height: 280px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 35px -12px black, 0 0 0 1px #3a3a3a;
+      background: #222;
+      backface-visibility: visible;
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+    }
+    .carousel-item:hover {
+      box-shadow: 0 30px 45px -10px #000, 0 0 0 2px #fff;
+    }
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(80%);  /* strong b&w feel */
+      border-radius: 20px;
+    }
+    /* controls */
+    .carousel-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2.8rem;
+      margin: 2.5rem 0 1rem;
+    }
+    .carousel-btn {
+      background: #1e1e1e;
+      border: 1px solid #3f3f3f;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      font-size: 2rem;
+      color: #ddd;
+      box-shadow: 0 6px 12px black;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-btn:hover {
+      background: #333;
+      color: white;
+      border-color: white;
+    }
+    .carousel-indicator {
+      font-family: 'Playfair Display', serif;
+      color: #bbb;
+      font-size: 1.2rem;
+    }
+    .price-tag {
+      text-align: center;
+      margin: 2rem 0 0.5rem;
+    }
+    .price-tag .price-box {
+      display: inline-block;
+      background: #1a1a1a;
+      border: 1px solid #444;
+      padding: 0.8rem 2.8rem;
+      border-radius: 60px;
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: white;
+      box-shadow: 0 5px 20px black;
+    }
+    .price-box small {
+      font-weight: 300;
+      color: #aaa;
+      font-size: 1rem;
+      margin-left: 10px;
+    }
+    .price-box .amharic {
+      font-size: 1rem;
+      margin-left: 5px;
+    }
+
+    /* ----- ABOUT US + CONTACT (bilingual) ----- */
+    .about-contact {
+      padding: 4rem 0;
+      background: #111;
+      border-top: 1px solid #2c2c2c;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .about-text h3, .contact-info h3 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+    .about-text p {
+      color: #bbb;
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+    }
+    .contact-info .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      color: #ccc;
+      font-size: 1.2rem;
+    }
+    .contact-item i {
+      width: 32px;
+      font-size: 1.6rem;
+      color: #aaa;
+    }
+    .contact-item a {
+      color: #ddd;
+      border-bottom: 1px dotted #555;
+    }
+    .contact-item a:hover {
+      color: white;
+    }
+    .fb-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #222;
+      padding: 0.5rem 1.4rem;
+      border-radius: 40px;
+      border: 1px solid #3f3f3f;
+      margin-top: 0.5rem;
+    }
+
+    /* ----- SERVICE / PRICE SECTION (extra) ----- */
+    .service-price {
+      background: #0f0f0f;
+      padding: 3rem 0;
+      border-top: 1px solid #2b2b2b;
+      text-align: center;
+    }
+    .service-price h2 {
+      font-size: 2.5rem;
+    }
+    .service-price .price-big {
+      font-size: 3rem;
+      font-weight: 600;
+      color: white;
+      margin: 1rem 0;
+    }
+
+    /* ----- FOOTER (facebook & email) ----- */
+    footer {
+      background: #0a0a0a;
+      padding: 2.5rem 0;
+      border-top: 1px solid #2a2a2a;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: #ccc;
+      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-bottom: 1px dotted #444;
+    }
+    .footer-links a:hover {
+      color: white;
+    }
+    .copyright {
+      color: #777;
+      font-size: 0.9rem;
+    }
+    .copyright .amharic {
+      font-size: 0.85rem;
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .vmv-grid { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .carousel-item { width: 180px; height: 220px; }
+      .carousel-wrapper { height: 380px; }
+      .hero h1 { font-size: 2.8rem; }
+    }
+    @media (max-width: 550px) {
+      .carousel-item { width: 140px; height: 170px; }
+      .carousel-wrapper { height: 300px; perspective: 1000px; }
+      .logo { font-size: 1.6rem; }
+      .nav-links { gap: 1rem; }
+      .price-box { font-size: 1.4rem; padding: 0.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <div class="logo"> <img src= https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/14536639/371736_417559.jpeg height="40" width="40">
+        Woynishet Mesfin <span> ወይኒሸት መስፍን · ሰአሊ</span>
+      </div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#vmv">Vision</a>
+        <a href="#vmv">Mission</a>
+        <a href="#vmv">Values</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#price">Price</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME section (hero) -->
+    <section id="home" class="hero container">
+      <h1>WOYNISHET MESFIN</h1>
+      <div class="amharic">ወይኒሸት መስፍን · በጥቁር እና ነጭ ቀለማት</div>
+      <p>Monochrome painter · የጥቁር እና ነጭ ሥነ ጥበብ ባለሙያ</p>
+    </section>
+
+    <!-- VISION, MISSION, CORE VALUES -->
+    <section id="vmv" class="vmv-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Vision · Mission · Values</h2>
+          <span class="amharic">ራዕይ · ተልዕኮ · ዋና እሴቶች</span>
+        </div>
+        <div class="vmv-grid">
+          <!-- Vision -->
+          <div class="vmv-card">
+            <i class="fas fa-eye"></i>
+            <h3>Vision</h3>
+            <span class="amharic">ራዕይ</span>
+            <p>To express the soul through contrasts, making black & white art accessible to every Ethiopian home.</p>
+            <p class="amharic">ነፍስን በንፅፅር መግለፅ፣ ጥቁር እና ነጭ ሥነ ጥበብን ለሁሉም ቤተሰብ ማድረስ።</p>
+          </div>
+          <!-- Mission -->
+          <div class="vmv-card">
+            <i class="fas fa-bullseye"></i>
+            <h3>Mission</h3>
+            <span class="amharic">ተልዕኮ</span>
+            <p>Create raw, emotional pieces using charcoal, graphite and ink; preserve Ethiopian narratives in monochrome.</p>
+            <p class="amharic">ጥንታዊ ትረካዎችን በጥቁርና ነጭ መግለፅ፣ ከስሜት ጋር የተያያዙ ሥራዎችን መፍጠር።</p>
+          </div>
+          <!-- Core Values -->
+          <div class="vmv-card">
+            <i class="fas fa-gem"></i>
+            <h3>Core Values</h3>
+            <span class="amharic">ዋና እሴቶች</span>
+            <p>Authenticity · minimalism · emotion · heritage · affordability (500 birr)</p>
+            <p class="amharic">እውነተኛነት · ትንሽነት · ስሜት · ባህል · ተመጣጣኝ ዋጋ (� Quinientos ብር)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D CAROUSEL with 6 pictures -->
+    <section class="carousel-section">
+      <div class="container section-title">
+        <h2>six movements · ስድስት ሥዕሎች</h2>
+        <span class="amharic">3D ዙሪያ ማሳያ</span>
+      </div>
+      <div class="carousel-wrapper">
+        <div id="carousel">
+          <!-- 6 placeholder images (artistic, black&white oriented) -->
+
+   <div class="carousel-item"><img src= https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/14536639/192505_509810.jpeg alt="wpaint"></div>
+          <div class="carousel-item"><img src=https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/14536639/891232_173161.jpeg alt="woys work"></div>
+          <div class="carousel-item"><img src=https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/14536639/372233_481100.jpeg  alt="face study"></div>
+          <div class="carousel-item"><img src= https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/14536639/371736_417559.jpeg " alt="dark forest"></div>
+          <div class="carousel-item"><img src=https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/14536639/372233_481100.jpeg  alt="rustic landscape"></div>
+          <div class="carousel-item"><img src= https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/14536639/372233_481100.jpeg " alt="still life"></div>
+        </div>
+      </div>
+          <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <span class="carousel-indicator" id="rotationIndicator">◈ 1/6</span>
+        <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <!-- Price per picture 500 birr (bilingual) -->
+      <div class="price-tag">
+        <div class="price-box">
+          🖤 500 BIRR <small>per original</small> <span class="amharic">በአንድ ሥዕል</span>
+        </div>
+      </div>
+      <p style="text-align:center; color:#777; margin-top:1rem;">hover to pause · ማንዣበብ ማቆሚያ</p>
+    </section>
+
+    <!-- ABOUT US & CONTACT (bilingual) -->
+    <section id="about" class="about-contact">
+      <div class="container two-col">
+        <!-- About Us -->
+        <div class="about-text">
+          <h3>About Us <span class="amharic">ስለ እኛ</span></h3>
+          <p>Woynishet Mesfin is an Ethiopian painter based in Addis Ababa. Working exclusively with charcoal, graphite and white ink, she captures the rawness of human emotion and highland landscapes. Her style is minimal, powerful, and deeply connected to Ethiopian heritage.</p>
+          <p class="amharic">ወይኒሸት መስፍን በአዲስ አበባ የምትኖር ኢትዮጵያዊት ሰአሊ ናት። በከሰል፣ እርሳስ እና ነጭ ቀለም ብቻ ትሰራለች፣ የሰውን ስሜት እና የደጋ መልክዓ ምድርን ትገልፃለች።</p>
+          <p><strong>500 birr</strong> per original piece · እያንዳንዱ የመጀመሪያ ሥዕል ፭፻ ብር</p>
+        </div>
+        <!-- Contact Us -->
+        <div class="contact-info" id="contact">
+          <h3>Contact Us <span class="amharic">ያግኙን</span></h3>
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <a href="tel:+251902542738">0902542738</a> <span class="amharic">(ስልክ)</span>
+          </div>
+          <div class="contact-item">
+            <i class="far fa-envelope"></i>
+            <a href="mailto:heartloyal43@gmail.com">heartloyal43@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-facebook"></i>
+            <a href="http://www.facebook.com/profile.php?id=6157555177467" target="_blank" class="fb-link">
+              facebook.com/w. mesfin
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICE / PRICE section (extra highlight) -->
+    <section id="price" class="service-price">
+      <div class="container">
+        <h2>Service & Price <span class="amharic">አገልግሎት እና ዋጋ</span></h2>
+        <div class="price-big">500 BIRR <span class="amharic">፭፻ ብር</span></div>
+        <p>per original painting · በእያንዳንዱ ሥዕል<br>commission works available · በአደራ ሥራም እንሰራለን</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER with facebook & gmail -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="http://www.facebook.com/profile.php?id=6157555177467" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="mailto:heartloyal43@gmail.com"><i class="far fa-envelope"></i> heartloyal43@gmail.com</a>
+        <a href="#"><i class="fas fa-phone-alt"></i> 0902542738</a>
+      </div>
+      <div class="copyright">
+        <p>© 2025 Woynishet Mesfin · ወይኒሸት መስፍን</p>
+        <p class="amharic">ጥቁር እና ነጭ ስቱዲዮ · መብቱ በህግ የተጠበቀ ነው</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 3D Carousel JavaScript (auto rotate + arrows) -->
+  <script>
+    (function() {
+      const carousel = document.getElementById('carousel');
+      const items = document.querySelectorAll('.carousel-item');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const indicator = document.getElementById('rotationIndicator');
+
+      if (!carousel || items.length === 0) return;
+
+      let currentAngle = 0;
+      const step = 60; // 360/6
+      let autoInterval = null;
+      const intervalTime = 3500;
+
+      function computeRadius() {
+        if (!items[0]) return 280;
+        const w = parseFloat(window.getComputedStyle(items[0]).width);
+        const tan30 = Math.tan(Math.PI / 6);
+        return (w / 2) / tan30 * 1.1;
+      }
+
+      function setTransforms() {
+        const radius = computeRadius();
+        items.forEach((item, i) => {
+          let angle = i * step;
+          item.style.transform = `translate(-50%, -50%) rotateY(${angle}deg) translateZ(${radius}px)`;
+        });
+      }
+
+      function rotateTo(angle) {
+        currentAngle = (angle % 360 + 360) % 360;
+        carousel.style.transform = `rotateY(${currentAngle}deg)`;
+        // update indicator
+        let idx = Math.round(currentAngle / step) % items.length;
+        idx = (idx + items.length) % items.length;
+        indicator.textContent = `◈ ${idx+1}/6`;
+      }
+
+      function next() {
+        stopAuto();
+        rotateTo(currentAngle - step);
+        startAuto();
+      }
+      function prev() {
+        stopAuto();
+        rotateTo(currentAngle + step);
+        startAuto();
+      }
+
+      function autoStep() { rotateTo(currentAngle - step); }
+      function startAuto() {
+        if (autoInterval) clearInterval(autoInterval);
+        autoInterval = setInterval(autoStep, intervalTime);
+      }
+      function stopAuto() {
+        if (autoInterval) {
+          clearInterval(autoInterval);
+          autoInterval = null;
+        }
+      }
+
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+      const wrapper = document.querySelector('.carousel-wrapper');
+      if (wrapper) {
+        wrapper.addEventListener('mouseenter', stopAuto);
+        wrapper.addEventListener('mouseleave', startAuto);
+      }
+
+      window.addEventListener('load', () => {
+        setTransforms();
+        rotateTo(0);
+        startAuto();
+      });
+
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(setTransforms, 100);
+      });
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopAuto(); else startAuto();
+      });
+    })();
+  </script>
+</body>
+</html>
